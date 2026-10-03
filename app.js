@@ -120,8 +120,8 @@ function filteredActions() {
     if (!needle) return true;
     const category = byCategory.get(action.category);
     const linkedSources = action.sources.map((id) => bySource.get(id)).filter(Boolean);
-    const haystack = fold([action.en.title, action.en.why, action.en.step, action.es.title, action.es.why, action.es.step, category?.en.name, category?.es.name, ...linkedSources.flatMap((source) => [source.name, source.esName || ''])].join(' '));
-    return haystack.includes(needle);
+    const words = fold([action.en.title, action.en.why, action.en.step, action.es.title, action.es.why, action.es.step, category?.en.name, category?.es.name, ...linkedSources.flatMap((source) => [source.name, source.esName || ''])].join(' ')).split(/[^a-z0-9]+/).filter(Boolean);
+    return needle.split(/\s+/).every((term) => words.some((word) => word.startsWith(term)));
   });
 }
 
