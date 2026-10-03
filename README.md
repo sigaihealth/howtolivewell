@@ -59,6 +59,9 @@ just an agency homepage. Prefer primary U.S. sources; describe state-specific
 eligibility as a lookup rather than a universal promise. Check both languages
 and the linked pages before publishing. Source links were checked in October
 2026; they need periodic review because services and guidance can change.
+When changing CSS, JavaScript, or content, update the shared `?v=` asset token
+in both HTML files and the `content.js` import in `app.js` so Cloudflare fetches
+the new static files immediately.
 
 For deployment and failover notes, see [DEPLOYMENT.md](DEPLOYMENT.md).
 

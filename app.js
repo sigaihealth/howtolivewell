@@ -1,4 +1,4 @@
-import { actions, categories, sources } from './content.js';
+import { actions, categories, sources } from './content.js?v=20261002b';
 
 const locale = document.documentElement.lang.startsWith('es') ? 'es' : 'en';
 const t = {
