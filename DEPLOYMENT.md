@@ -9,6 +9,7 @@ no account, database, server-side code, or runtime secrets are needed.
 1. Check that the reviewed source is committed and pushed to the public GitHub
    repository. Clone or fast-forward it to `/home/yonghuang/howtolivewell` on
    `sigdev2`. Do not overwrite local changes on the server.
+   Run `node scripts/check-content.mjs` before the push.
 2. On `sigdev2`, run `docker compose up -d --build` in that directory. The Compose
    service publishes container port 8080 to `192.168.68.85:3640` by default;
    check that this port is free immediately before deployment. It uses Docker's
@@ -16,7 +17,8 @@ no account, database, server-side code, or runtime secrets are needed.
    exhausted.
 3. Check `docker compose ps` and fetch both
    `http://192.168.68.85:3640/` and `http://192.168.68.85:3640/es/`.
-   Fetch `/style.css`, `/app.js`, and `/favicon.svg` as well.
+   Fetch `/style.css`, `/app.js`, `/content.js`, `/pathways.js`, all three
+   `expansion-*.js` modules, and `/favicon.svg` as well.
 4. On `sigdev1`, install `deploy/livewell.sig.ai.nginx` as the real file
    `/etc/nginx/sites-enabled/livewell.sig.ai`. Run `sudo nginx -t` before
    `sudo systemctl reload nginx`. The vhost reuses the existing `*.sig.ai`

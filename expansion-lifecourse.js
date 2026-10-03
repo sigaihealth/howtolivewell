@@ -1,0 +1,155 @@
+// Life-course additions to the U.S. action guide. Benefit eligibility, program
+// availability, deadlines, and state or local rules can change; check the linked
+// primary source and the agency that handles your own case before acting.
+
+export const sources = [
+  { id: 'future-benefits', name: 'U.S. Department of Labor: Changing Jobs and Job Loss', url: 'https://www.dol.gov/agencies/ebsa/workers-and-families/changing-jobs-and-job-loss' },
+  { id: 'future-lost-coverage', name: 'HealthCare.gov: If you lose job-based coverage', esName: 'CuidadoDeSalud.gov: Si pierde la cobertura del empleo', url: 'https://www.healthcare.gov/have-job-based-coverage/if-you-lose-job-based-coverage/index.html', esUrl: 'https://www.cuidadodesalud.gov/es/have-job-based-coverage/if-you-lose-job-based-coverage/' },
+  { id: 'future-occupations', name: 'CareerOneStop: Occupation Profile', url: 'https://cloudfront.careeronestop.org/Toolkit/Careers/Occupations/occupation-profile.aspx' },
+  { id: 'future-apprenticeships', name: 'U.S. Department of Labor: Apprenticeship for career seekers', url: 'https://www.apprenticeship.gov/career-seekers' },
+  { id: 'future-trade-school', name: 'FTC: Choosing a vocational school or certificate program', url: 'https://consumer.ftc.gov/articles/choosing-vocational-school-or-certificate-program' },
+  { id: 'future-fafsa-source', name: 'Federal Student Aid: Filling out the FAFSA form', url: 'https://studentaid.gov/apply-for-aid/fafsa/filling-out' },
+  { id: 'future-housing-counseling', name: 'HUD: About housing counseling', url: 'https://www.hud.gov/hud-partners/single-family-about-housing-counseling' },
+  { id: 'future-vouchers', name: 'HUD: Housing Choice Voucher program', url: 'https://www.hud.gov/topics/housing_choice_voucher_program_section_8' },
+  { id: 'future-rental-listings', name: 'FTC: Rental listing scams', url: 'https://consumer.ftc.gov/articles/rental-listing-scams' },
+  { id: 'future-tenant-screening', name: 'CFPB: Rental application denied because of a screening report', url: 'https://www.consumerfinance.gov/ask-cfpb/what-should-i-do-if-my-rental-application-is-denied-because-of-a-tenant-screening-report-en-2105/' },
+  { id: 'future-evacuation', name: 'FEMA Ready.gov: Are You Ready? guide', esName: 'FEMA Listo.gov: ¿Está preparado?', url: 'https://www.ready.gov/sites/default/files/2021-11/are-you-ready-guide.pdf', esUrl: 'https://www.ready.gov/sites/default/files/2021-11/are-you-ready-guide_spanish.pdf' },
+  { id: 'future-outage', name: 'FEMA Ready.gov: Power outage information sheet', esName: 'FEMA Listo.gov: Cortes de suministro eléctrico', url: 'https://www.ready.gov/sites/default/files/2024-03/ready.gov_power-outage_hazard-info-sheet.pdf', esUrl: 'https://www.ready.gov/sites/default/files/2024-08/ready.gov_power-outage_info-sheet_spanish.pdf' },
+  { id: 'future-disaster-finances', name: 'CFPB: Get prepared before a disaster or emergency strikes', url: 'https://www.consumerfinance.gov/consumer-tools/disasters-and-emergencies/get-prepared-before-disaster-emergency-strikes/' },
+  { id: 'future-withholding', name: 'IRS: Tax withholding', url: 'https://www.irs.gov/individuals/employees/tax-withholding' },
+  { id: 'future-free-file', name: 'IRS: File your taxes for free', url: 'https://www.irs.gov/file-your-taxes-for-free' },
+  { id: 'future-fdic', name: 'FDIC: Deposit insurance FAQs', url: 'https://www.fdic.gov/resources/deposit-insurance/faq' },
+  { id: 'future-credit-counseling', name: 'CFPB: What is credit counseling?', url: 'https://www.consumerfinance.gov/ask-cfpb/what-is-credit-counseling-en-1451/' },
+  { id: 'future-ssa-statement', name: 'Social Security Administration: Your Social Security Statement', url: 'https://www.ssa.gov/myaccount/statement.html' },
+  { id: 'future-vehicle-recalls', name: 'NHTSA: Check for vehicle recalls', url: 'https://www.nhtsa.gov/recalls' },
+  { id: 'future-loan-calculator', name: 'Federal Student Aid: Compare repayment plans', url: 'https://studentaid.gov/articles/repayment-calculator/' },
+];
+
+export const actions = [
+  {
+    id: 'future-compare-job-benefits', category: 'work', effort: 'plan',
+    en: { title: 'Compare benefits before changing jobs', why: 'Health coverage dates, premiums, doctors, and retirement vesting can change with a job move.', step: 'Ask both employers for plan details. Write down when current coverage ends, when new coverage starts, and what happens to your retirement account.' },
+    es: { title: 'Compara los beneficios antes de cambiar de empleo', why: 'Las fechas de cobertura médica, primas, médicos y derechos sobre la cuenta de jubilación pueden cambiar.', step: 'Pide los detalles de ambos planes. Anota cuándo termina la cobertura actual, cuándo empieza la nueva y qué pasa con tu cuenta de jubilación.' },
+    sources: ['future-benefits'],
+  },
+  {
+    id: 'future-plan-coverage-after-job-loss', category: 'work', effort: 'today',
+    en: { title: 'Act quickly if job health coverage ends', why: 'Losing job-based insurance can open a limited window to enroll in a Marketplace plan; COBRA may also be an option.', step: 'Check your Marketplace options promptly, usually within 60 days of losing coverage. Compare premiums, start dates, and any COBRA offer before choosing.' },
+    es: { title: 'Actúa pronto si termina el seguro de tu empleo', why: 'Perder ese seguro puede abrir un plazo limitado para inscribirte en un plan del Mercado; COBRA también podría ser una opción.', step: 'Consulta las opciones del Mercado cuanto antes, por lo general dentro de los 60 días posteriores a perder la cobertura. Compara primas, fechas de inicio y cualquier oferta de COBRA.' },
+    sources: ['future-lost-coverage'],
+  },
+  {
+    id: 'future-compare-career-paths', category: 'work', effort: 'week',
+    en: { title: 'Compare two careers before retraining', why: 'Pay, openings, entry requirements, and licenses differ by occupation and state.', step: 'Use CareerOneStop’s Occupation Profile for two jobs in your area. Note typical wages, required training, and any state license before paying for a program.' },
+    es: { title: 'Compara dos profesiones antes de capacitarte', why: 'El sueldo, las vacantes, los requisitos y las licencias cambian según la ocupación y el estado.', step: 'Consulta dos trabajos de tu zona en Occupation Profile de CareerOneStop. Anota salarios habituales, formación requerida y licencias estatales antes de pagar un programa.' },
+    sources: ['future-occupations'],
+  },
+  {
+    id: 'future-find-paid-apprenticeship', category: 'work', effort: 'week',
+    en: { title: 'Look for a paid apprenticeship', why: 'Registered apprenticeships combine paid work, training, and a recognized credential.', step: 'Search Apprenticeship.gov by field and location, then check each employer’s or sponsor’s application requirements.' },
+    es: { title: 'Busca un aprendizaje remunerado', why: 'Los programas registrados combinan trabajo pagado, formación y una credencial reconocida.', step: 'Busca en Apprenticeship.gov por oficio y lugar; después revisa los requisitos de solicitud del empleador o patrocinador.' },
+    sources: ['future-apprenticeships'],
+  },
+  {
+    id: 'future-check-training-program', category: 'support', effort: 'plan',
+    en: { title: 'Check a training program before enrolling', why: 'A costly certificate is useful only if it fits your target job and meets any licensing rules.', step: 'Ask the school for total cost, completion and job outcomes, and accreditation. Confirm licensing requirements with your state board and compare other programs.' },
+    es: { title: 'Investiga un programa antes de inscribirte', why: 'Un certificado costoso solo ayuda si sirve para el empleo que buscas y cumple las reglas de licencia.', step: 'Pide el costo total, las tasas de finalización y los resultados laborales. Confirma la acreditación y los requisitos de licencia con la junta estatal; compara otras opciones.' },
+    sources: ['future-trade-school'],
+  },
+  {
+    id: 'future-apply-for-student-aid', category: 'support', effort: 'plan',
+    en: { title: 'Check aid before paying for school', why: 'The FAFSA is the starting point for federal student aid and may also be used for state or school aid.', step: 'If you plan to attend an eligible college or career school, use the official FAFSA site for the correct school year. Check your state and school deadlines separately.' },
+    es: { title: 'Consulta la ayuda antes de pagar estudios', why: 'La FAFSA es el punto de partida para la ayuda federal y también puede servir para solicitar ayuda estatal o de la institución.', step: 'Si planeas estudiar en una institución elegible, llena la FAFSA oficial para el año académico correcto. Revisa por separado los plazos de tu estado y escuela.' },
+    sources: ['future-fafsa-source'],
+  },
+  {
+    id: 'future-talk-to-housing-counselor', category: 'support', effort: 'week',
+    en: { title: 'Get advice for a housing problem', why: 'HUD-approved counselors can help with rental issues and housing plans; eviction counseling is free.', step: 'Search for a HUD-approved agency or call 800-569-4287. Ask for help in your language. Eviction counseling is free; ask about fees for other services.' },
+    es: { title: 'Busca orientación para un problema de vivienda', why: 'Los consejeros aprobados por HUD ayudan con el alquiler y otros planes de vivienda; la orientación ante un desalojo es gratis.', step: 'Busca una agencia aprobada por HUD o llama al 800-569-4287. Pide atención en tu idioma. La orientación por desalojo es gratis; pregunta por costos de otros servicios.' },
+    sources: ['future-housing-counseling'],
+  },
+  {
+    id: 'future-check-voucher-waitlists', category: 'support', effort: 'plan',
+    en: { title: 'Check local housing voucher waitlists', why: 'Housing Choice Vouchers are handled by local public housing agencies, and openings and eligibility vary.', step: 'Find your local public housing agency, ask if its voucher waitlist is open, and check income and documentation rules. Expect that a waitlist may be long.' },
+    es: { title: 'Consulta las listas de espera para vales de vivienda', why: 'Las agencias locales de vivienda pública administran estos vales; la disponibilidad y los requisitos varían.', step: 'Busca tu agencia local, pregunta si la lista de espera está abierta y revisa límites de ingresos y documentos. La espera puede ser larga.' },
+    sources: ['future-vouchers'],
+  },
+  {
+    id: 'future-verify-rental-listing', category: 'home', effort: 'today',
+    en: { title: 'Verify a rental before sending money', why: 'Scammers can copy a real listing and collect deposits for a home they cannot rent.', step: 'Check the address and owner or manager through independent sources, see the place if you can, and read the lease before paying or sharing sensitive documents.' },
+    es: { title: 'Verifica un alquiler antes de enviar dinero', why: 'Los estafadores pueden copiar anuncios reales y cobrar depósitos por viviendas que no pueden alquilar.', step: 'Comprueba la dirección y el propietario o administrador por fuentes independientes, visita el lugar si puedes y lee el contrato antes de pagar o compartir documentos sensibles.' },
+    sources: ['future-rental-listings'],
+  },
+  {
+    id: 'future-dispute-tenant-report', category: 'home', effort: 'today',
+    en: { title: 'Check a tenant report after a denial', why: 'A rental screening error can block housing or raise your deposit.', step: 'If a screening report affected your application, use the notice to request a free copy from the reporting company within 60 days. Dispute any inaccurate or outdated item.' },
+    es: { title: 'Revisa el informe de inquilino tras un rechazo', why: 'Un error en ese informe puede impedirte alquilar o aumentar el depósito.', step: 'Si un informe afectó tu solicitud, usa el aviso para pedir una copia gratis a la empresa dentro de 60 días. Impugna cualquier dato incorrecto o desactualizado.' },
+    sources: ['future-tenant-screening'],
+  },
+  {
+    id: 'future-plan-evacuation-ride', category: 'home', effort: 'week',
+    en: { title: 'Plan how you would evacuate', why: 'A warning may come when roads, transit, or the person who usually drives you are unavailable.', step: 'Find local evacuation routes and two possible places to go. If you lack a car or need accessible transport, arrange a backup ride and ask local emergency management about available help.' },
+    es: { title: 'Planea cómo saldrías en una evacuación', why: 'La alerta puede llegar cuando las carreteras, el transporte o quien suele llevarte no estén disponibles.', step: 'Identifica rutas locales y dos lugares a donde ir. Si no tienes auto o necesitas transporte accesible, acuerda otra forma de salir y consulta a la oficina local de emergencias.' },
+    sources: ['future-evacuation'],
+  },
+  {
+    id: 'future-plan-medical-power', category: 'home', effort: 'plan',
+    en: { title: 'Plan for medical needs during an outage', why: 'Electric medical devices and refrigerated medicines may need a specific backup plan.', step: 'Ask your clinician or pharmacist how to handle an extended power loss. Write down safe power, medicine storage, and alternate-location options.' },
+    es: { title: 'Planifica las necesidades médicas ante un apagón', why: 'Los dispositivos médicos eléctricos y los medicamentos refrigerados pueden necesitar un plan especial.', step: 'Pregunta a tu profesional de salud o farmacéutico qué hacer si el corte dura mucho. Anota opciones seguras de energía, conservación y otro lugar donde atenderte.' },
+    sources: ['future-outage'],
+  },
+  {
+    id: 'future-protect-disaster-records', category: 'home', effort: 'week',
+    en: { title: 'Keep essential records reachable', why: 'After a disaster, identification, insurance, account, and medical details can be needed to get help.', step: 'Make secure copies of key documents and contact numbers. Keep one protected copy outside your home or in password-protected storage you can reach.' },
+    es: { title: 'Mantén a mano tus documentos esenciales', why: 'Tras un desastre podrías necesitar identificación y datos de seguros, cuentas y salud para pedir ayuda.', step: 'Haz copias seguras de documentos y teléfonos importantes. Guarda una copia protegida fuera de casa o en un lugar digital con contraseña al que puedas entrar.' },
+    sources: ['future-disaster-finances'],
+  },
+  {
+    id: 'future-review-home-insurance-gaps', category: 'home', effort: 'plan',
+    en: { title: 'Check what your home policy covers', why: 'Standard home and renters policies may leave flood or earthquake losses uncovered, and deductibles matter.', step: 'Read the coverage and deductible pages or call your insurer. Ask about risks where you live and what separate coverage would cost before deciding.' },
+    es: { title: 'Revisa qué cubre tu seguro de vivienda', why: 'Las pólizas comunes para propietarios e inquilinos pueden excluir inundaciones o terremotos; también importan los deducibles.', step: 'Lee las páginas de cobertura y deducibles o llama a la aseguradora. Pregunta por los riesgos de tu zona y el costo de una cobertura aparte antes de decidir.' },
+    sources: ['future-disaster-finances'],
+  },
+  {
+    id: 'future-check-tax-withholding', category: 'money', effort: 'week',
+    en: { title: 'Recheck withholding after a life change', why: 'A new job or change in household income can affect what you owe at tax time.', step: 'If federal income tax is withheld from your pay, use the IRS Tax Withholding Estimator with a recent pay stub. Give your employer a new W-4 if you decide to adjust it.' },
+    es: { title: 'Revisa las retenciones tras un cambio de vida', why: 'Un nuevo empleo o un cambio en los ingresos del hogar puede afectar lo que debas al declarar impuestos.', step: 'Si retienen impuesto federal de tu sueldo, usa el estimador del IRS con un recibo reciente. Entrega un nuevo W-4 a tu empleador si decides cambiar la retención.' },
+    sources: ['future-withholding'],
+  },
+  {
+    id: 'future-check-free-tax-filing', category: 'money', effort: 'plan',
+    en: { title: 'Check free tax filing options', why: 'Eligible filers can prepare a federal return through IRS Free File or get help from IRS volunteer programs.', step: 'During filing season, start at the IRS free-filing page and check current eligibility, provider rules, and whether a state return is included.' },
+    es: { title: 'Consulta opciones gratis para declarar impuestos', why: 'Quienes cumplan los requisitos pueden preparar la declaración federal con IRS Free File o recibir ayuda de voluntarios del IRS.', step: 'En la temporada de impuestos, empieza en la página oficial del IRS y revisa los requisitos actuales, las reglas del proveedor y si incluye la declaración estatal.' },
+    sources: ['future-free-file'],
+  },
+  {
+    id: 'future-check-deposit-protection', category: 'money', effort: 'week',
+    en: { title: 'Check where your deposits are protected', why: 'FDIC coverage depends on the bank, account type, ownership, and amount; investments are different.', step: 'Confirm that your bank is FDIC-insured and, if you have multiple or large accounts, use the FDIC coverage estimator or contact the FDIC.' },
+    es: { title: 'Comprueba la protección de tus depósitos', why: 'La cobertura de FDIC depende del banco, tipo de cuenta, titularidad y monto; las inversiones son distintas.', step: 'Confirma que tu banco tenga seguro de FDIC y, si tienes varias cuentas o saldos altos, usa su estimador de cobertura o contacta a FDIC.' },
+    sources: ['future-fdic'],
+  },
+  {
+    id: 'future-find-debt-counselor', category: 'money', effort: 'week',
+    en: { title: 'Get a second opinion on debt', why: 'A reputable nonprofit credit counselor can review your budget and options when several debts feel unmanageable.', step: 'Ask a counselor for free information first. Check fees, credentials, and any proposed payment plan in writing before signing.' },
+    es: { title: 'Busca otra opinión sobre tus deudas', why: 'Un consejero de crédito confiable y sin fines de lucro puede revisar tu presupuesto y opciones si varias deudas te abruman.', step: 'Pide primero información gratuita. Verifica tarifas, credenciales y cualquier plan de pagos por escrito antes de firmar.' },
+    sources: ['future-credit-counseling'],
+  },
+  {
+    id: 'future-review-social-security-record', category: 'money', effort: 'plan',
+    en: { title: 'Review your Social Security record', why: 'Your earnings history affects future benefit estimates, and errors are easier to address when found early.', step: 'Use your official my Social Security account to review reported earnings and benefit estimates. Follow SSA instructions if an earnings year looks wrong.' },
+    es: { title: 'Revisa tu historial del Seguro Social', why: 'Tu registro de ingresos influye en las estimaciones de beneficios futuros; es mejor detectar errores temprano.', step: 'En tu cuenta oficial my Social Security, revisa ingresos declarados y estimaciones. Sigue las instrucciones de SSA si algún año parece incorrecto.' },
+    sources: ['future-ssa-statement'],
+  },
+  {
+    id: 'future-check-vehicle-recall', category: 'home', effort: 'week',
+    en: { title: 'Check your vehicle for open recalls', why: 'A safety defect may have a free manufacturer repair even if the vehicle drives normally.', step: 'If you use a car, enter its VIN at NHTSA’s recall page. Follow any interim safety guidance and contact a dealer for an open recall.' },
+    es: { title: 'Revisa si tu vehículo tiene llamados a revisión', why: 'Un defecto de seguridad podría tener reparación gratuita del fabricante aunque el auto parezca funcionar bien.', step: 'Si usas auto, ingresa su número VIN en la página de NHTSA. Sigue las indicaciones de seguridad y contacta a un concesionario si hay un llamado pendiente.' },
+    sources: ['future-vehicle-recalls'],
+  },
+  {
+    id: 'future-compare-student-loan-plans', category: 'money', effort: 'week',
+    en: { title: 'Compare federal student loan payment plans', why: 'A lower monthly bill can change your total cost and time in repayment; eligibility depends on your loans.', step: 'If you have federal student loans, use Federal Student Aid’s Repayment Calculator to compare estimated monthly and total payments. Confirm the final terms with your servicer.' },
+    es: { title: 'Compara planes de pago de préstamos estudiantiles federales', why: 'Una cuota mensual menor puede cambiar el costo total y el tiempo de pago; los requisitos dependen de tus préstamos.', step: 'Si tienes préstamos federales, usa la calculadora de Federal Student Aid para comparar cuotas y costo total estimados. Confirma las condiciones finales con tu administrador de préstamos.' },
+    sources: ['future-loan-calculator'],
+  },
+];

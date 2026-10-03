@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="google" content="notranslate" />
     <meta name="theme-color" content="#f7f5ee" />
-    <meta name="description" content="A practical, evidence-linked guide to everyday life in the United States. Small steps for health, safety, money, housing, work, and connection." />
+    <meta name="description" content="A practical, evidence-linked guide to everyday life in the United States. Small steps for health, safety, family, money, housing, work, digital life, and everyday rights." />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Live Well, Here | A practical guide for life in the U.S." />
-    <meta property="og:description" content="Find one useful next step for health, safety, money, home, work, and connection. Free in English and Spanish." />
+    <meta property="og:description" content="Find one useful next step for health, safety, family, money, home, work, and digital life. Free in English and Spanish." />
     <meta property="og:url" content="https://livewell.sig.ai/" />
     <meta name="twitter:card" content="summary" />
     <link rel="canonical" href="https://livewell.sig.ai/" />
@@ -16,7 +16,7 @@
     <link rel="alternate" hreflang="es-US" href="https://livewell.sig.ai/es/" />
     <link rel="alternate" hreflang="x-default" href="https://livewell.sig.ai/" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/style.css?v=20261002b" />
+    <link rel="stylesheet" href="/style.css?v=20261002c" />
     <title>Live Well, Here | A practical guide for life in the U.S.</title>
   </head>
   <body>
@@ -51,7 +51,7 @@
             <span class="art-dot dot-one"></span><span class="art-dot dot-two"></span><span class="art-dot dot-three"></span>
           </div>
         </div>
-        <div class="container"><div class="hero-bottom"><span>07 TOPICS</span><span>Good information, made usable.</span><span class="scroll-cue">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></span></div></div>
+        <div class="container"><div class="hero-bottom"><span>10 TOPICS</span><span>Good information, made usable.</span><span class="scroll-cue">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></span></div></div>
       </section>
 
       <section class="help-strip" aria-label="Immediate help">
@@ -64,6 +64,10 @@
 
       <section class="explore-section" id="explore">
         <div class="container"><div class="section-heading"><div><p class="section-kicker">THE GUIDE</p><h2>What would help <em>today?</em></h2></div><p>Browse by area of life or search for a specific need. Your saved steps stay on this device.</p></div>
+          <div class="pathways-panel" aria-labelledby="pathways-title">
+            <div class="pathways-heading"><div><p class="section-kicker">START WHERE YOU ARE</p><h3 id="pathways-title">Choose a situation</h3></div><p>These short paths bring related steps together. You can also browse every topic below.</p></div>
+            <div id="pathway-list" class="pathway-list" role="group" aria-label="Suggested starting paths"></div>
+          </div>
           <div class="filter-panel">
             <label class="search-box" for="search"><span aria-hidden="true">⌕</span><span class="visually-hidden">Search the guide</span><input id="search" type="search" placeholder="Search steps, needs, and resources" autocomplete="off" /><kbd>/</kbd></label>
             <div class="filter-row"><div id="category-filters" class="filter-list" role="group" aria-label="Filter by topic"></div><div class="filter-tools"><label for="effort-filter" class="visually-hidden">Filter by time</label><select id="effort-filter"><option value="all">Any time</option><option value="today">Start today</option><option value="week">This week</option><option value="plan">Make a plan</option></select><button id="saved-filter" type="button" class="saved-filter" aria-pressed="false">♡ Saved <span id="saved-count">0</span></button></div></div>
@@ -74,11 +78,11 @@
         </div>
       </section>
 
-      <section class="resources-section" id="resources"><div class="container"><div class="section-heading resources-heading"><div><p class="section-kicker">WHEN YOU NEED MORE THAN A TIP</p><h2>Real help, <em>right here.</em></h2></div><p>These services can help you find the right next person, program, or place. Availability and eligibility can vary by location.</p></div><div class="resource-grid"><a href="https://www.usa.gov/benefits" target="_blank" rel="noopener noreferrer" class="resource-card"><span class="resource-icon" aria-hidden="true">↗</span><span class="resource-type">BENEFITS</span><strong>Find government benefits</strong><span>Food, housing, health care, and other assistance.</span><span class="resource-domain">USA.gov ↗</span></a><a href="https://www.211.org/" target="_blank" rel="noopener noreferrer" class="resource-card"><span class="resource-icon" aria-hidden="true">↗</span><span class="resource-type">LOCAL SUPPORT</span><strong>Connect with 211</strong><span>Find local services for immediate needs.</span><span class="resource-domain">211.org ↗</span></a><a href="https://www.healthcare.gov/" target="_blank" rel="noopener noreferrer" class="resource-card"><span class="resource-icon" aria-hidden="true">↗</span><span class="resource-type">HEALTH COVERAGE</span><strong>Explore coverage</strong><span>See Marketplace, Medicaid, and CHIP options.</span><span class="resource-domain">HealthCare.gov ↗</span></a><a href="https://988lifeline.org/" target="_blank" rel="noopener noreferrer" class="resource-card"><span class="resource-icon" aria-hidden="true">↗</span><span class="resource-type">24/7 SUPPORT</span><strong>Talk to someone now</strong><span>Free, confidential emotional support by call, text, or chat.</span><span class="resource-domain">988 Lifeline ↗</span></a></div></div></section>
+      <section class="resources-section" id="resources"><div class="container"><div class="section-heading resources-heading"><div><p class="section-kicker">WHEN YOU NEED MORE THAN A TIP</p><h2>Real help, <em>right here.</em></h2></div><p>These services can help you find the right next person, program, or place. Availability and eligibility can vary by location.</p></div><div class="resource-grid"><a href="https://www.usa.gov/benefits" target="_blank" rel="noopener noreferrer" class="resource-card"><span class="resource-icon" aria-hidden="true">↗</span><span class="resource-type">BENEFITS</span><strong>Find government benefits</strong><span>Food, housing, health care, and other assistance.</span><span class="resource-domain">USA.gov ↗</span></a><a href="https://www.211.org/" target="_blank" rel="noopener noreferrer" class="resource-card"><span class="resource-icon" aria-hidden="true">↗</span><span class="resource-type">LOCAL SUPPORT</span><strong>Connect with 211</strong><span>Find local services for immediate needs.</span><span class="resource-domain">211.org ↗</span></a><a href="https://www.healthcare.gov/" target="_blank" rel="noopener noreferrer" class="resource-card"><span class="resource-icon" aria-hidden="true">↗</span><span class="resource-type">HEALTH COVERAGE</span><strong>Explore coverage</strong><span>See Marketplace, Medicaid, and CHIP options.</span><span class="resource-domain">HealthCare.gov ↗</span></a><a href="https://988lifeline.org/" target="_blank" rel="noopener noreferrer" class="resource-card"><span class="resource-icon" aria-hidden="true">↗</span><span class="resource-type">24/7 SUPPORT</span><strong>Talk to someone now</strong><span>Free, confidential emotional support by call, text, or chat.</span><span class="resource-domain">988 Lifeline ↗</span></a><a href="https://acl.gov/help" target="_blank" rel="noopener noreferrer" class="resource-card"><span class="resource-icon" aria-hidden="true">↗</span><span class="resource-type">FAMILY & CAREGIVING</span><strong>Find local aging and disability support</strong><span>Connect with help for older adults, people with disabilities, and caregivers.</span><span class="resource-domain">Administration for Community Living ↗</span></a><a href="https://www.usa.gov/legal-aid" target="_blank" rel="noopener noreferrer" class="resource-card"><span class="resource-icon" aria-hidden="true">↗</span><span class="resource-type">LEGAL HELP</span><strong>Find affordable legal help</strong><span>Look up free or lower-cost services near you for civil legal problems.</span><span class="resource-domain">USA.gov ↗</span></a></div></div></section>
 
       <section class="about-section" id="about"><div class="container about-grid"><div><p class="section-kicker">A NOTE ABOUT THIS PROJECT</p><h2>Useful advice should be <em>open to everyone.</em></h2></div><div><p>This guide is original, U.S.-focused writing inspired by the idea of making everyday advice easier to use. Every action links to a public source. It is general information, so check the linked source and ask a qualified professional about your own medical, legal, or financial situation.</p><p>Programs and rules can change and may differ by state. The guide is free, bilingual, and open source. Saved steps are kept only in your browser.</p><div class="about-links"><a href="https://github.com/sigaihealth/howtolivewell" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a><a href="https://cdyforever.github.io/how-to-live-better/" target="_blank" rel="noopener noreferrer">Original inspiration ↗</a></div><p class="review-date">Source links checked October 2026.</p></div></div></section>
     </main>
     <footer class="site-footer"><div class="container footer-inner"><a class="brand footer-brand" href="/" aria-label="Live Well, Here home"><span class="brand-mark" aria-hidden="true"><span></span></span><span>live well<span class="brand-comma">,</span> here<span class="brand-period">.</span></span></a><p>One useful step at a time.</p><div><a href="#main">Back to top ↑</a><a href="/es/" lang="es" hreflang="es-US">Español</a></div></div></footer>
-    <script type="module" src="/app.js?v=20261002b"></script>
+    <script type="module" src="/app.js?v=20261002c"></script>
   </body>
 </html>

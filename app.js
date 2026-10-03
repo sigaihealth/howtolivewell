@@ -1,4 +1,11 @@
-import { actions, categories, sources } from './content.js?v=20261002b';
+import { actions as coreActions, categories, sources as coreSources } from './content.js?v=20261002c';
+import { actions as familyActions, sources as familySources } from './expansion-family.js?v=20261002c';
+import { actions as rightsActions, sources as rightsSources } from './expansion-rights.js?v=20261002c';
+import { actions as lifeActions, sources as lifeSources } from './expansion-lifecourse.js?v=20261002c';
+import { pathways } from './pathways.js?v=20261002c';
+
+const actions = [...coreActions, ...familyActions, ...rightsActions, ...lifeActions];
+const sources = [...coreSources, ...familySources, ...rightsSources, ...lifeSources];
 
 const locale = document.documentElement.lang.startsWith('es') ? 'es' : 'en';
 const t = {
@@ -54,14 +61,18 @@ let selectedEffort = 'all';
 let savedOnly = false;
 let query = '';
 let visibleCount = 12;
+let selectedPath = pathways.some((path) => path.id === new URLSearchParams(location.search).get('path'))
+  ? new URLSearchParams(location.search).get('path') : null;
 
 const search = document.getElementById('search');
+const pathwayList = document.getElementById('pathway-list');
 const categoryFilters = document.getElementById('category-filters');
 const effortFilter = document.getElementById('effort-filter');
 const savedFilter = document.getElementById('saved-filter');
 const savedCount = document.getElementById('saved-count');
 const clearFilters = document.getElementById('clear-filters');
 const resultsCount = document.getElementById('results-count');
+resultsCount.tabIndex = -1;
 const grid = document.getElementById('actions-grid');
 const emptyState = document.getElementById('empty-state');
 const loadMore = document.getElementById('load-more');
@@ -95,6 +106,51 @@ function element(tag, className, text) {
   return node;
 }
 
+function syncLanguageLinks() {
+  document.querySelectorAll('a[hreflang]').forEach((link) => {
+    const base = link.dataset.baseHref || link.getAttribute('href');
+    link.dataset.baseHref = base;
+    const url = new URL(base, location.origin);
+    if (selectedPath) url.searchParams.set('path', selectedPath);
+    url.hash = location.hash;
+    link.href = `${url.pathname}${url.search}${url.hash}`;
+  });
+}
+
+function setPath(id) {
+  selectedPath = id;
+  const url = new URL(location.href);
+  if (id && url.hash) {
+    let hashId = '';
+    try { hashId = decodeURIComponent(url.hash.slice(1)); } catch { /* Ignore malformed fragments. */ }
+    if (actions.some((action) => action.id === hashId)) url.hash = '';
+  }
+  if (id) url.searchParams.set('path', id);
+  else url.searchParams.delete('path');
+  history.replaceState(null, '', `${url.pathname}${url.search}${url.hash}`);
+  syncLanguageLinks();
+}
+
+function renderPathways() {
+  if (!pathwayList.childElementCount) {
+    pathways.forEach((path, index) => {
+      const button = element('button', 'pathway-card');
+      button.type = 'button';
+      button.dataset.path = path.id;
+      button.append(
+        element('span', 'pathway-number', String(index + 1).padStart(2, '0')),
+        element('strong', '', path[locale].title),
+        element('span', 'pathway-description', path[locale].description),
+        element('span', 'pathway-arrow', '↗'),
+      );
+      pathwayList.append(button);
+    });
+  }
+  pathwayList.querySelectorAll('button[data-path]').forEach((button) => {
+    button.setAttribute('aria-pressed', String(button.dataset.path === selectedPath));
+  });
+}
+
 function renderFilters() {
   if (!categoryFilters.childElementCount) {
     const choices = [{ id: 'all', en: { name: t.all }, es: { name: t.all } }, ...categories];
@@ -112,16 +168,18 @@ function renderFilters() {
 
 function filteredActions() {
   const fold = (value) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase(locale === 'es' ? 'es-US' : 'en-US');
-  const needle = fold(query.trim());
-  return actions.filter((action) => {
+  const terms = fold(query.trim()).split(/[^a-z0-9]+/).filter(Boolean);
+  const path = pathways.find((item) => item.id === selectedPath);
+  const pool = path ? path.actions.map((id) => actions.find((action) => action.id === id)).filter(Boolean) : actions;
+  return pool.filter((action) => {
     if (selectedCategory !== 'all' && action.category !== selectedCategory) return false;
     if (selectedEffort !== 'all' && action.effort !== selectedEffort) return false;
     if (savedOnly && !saved.has(action.id)) return false;
-    if (!needle) return true;
+    if (!terms.length) return true;
     const category = byCategory.get(action.category);
     const linkedSources = action.sources.map((id) => bySource.get(id)).filter(Boolean);
     const words = fold([action.en.title, action.en.why, action.en.step, action.es.title, action.es.why, action.es.step, category?.en.name, category?.es.name, ...linkedSources.flatMap((source) => [source.name, source.esName || ''])].join(' ')).split(/[^a-z0-9]+/).filter(Boolean);
-    return needle.split(/\s+/).every((term) => words.some((word) => word.startsWith(term)));
+    return terms.every((term) => words.some((word) => word.startsWith(term)));
   });
 }
 
@@ -214,32 +272,62 @@ async function copyLink(id) {
 
 function render() {
   renderFilters();
+  renderPathways();
   const found = filteredActions();
   const displayed = found.slice(0, visibleCount);
-  grid.replaceChildren(...displayed.map((action, index) => makeCard(action, index)));
-  resultsCount.textContent = `${found.length} ${found.length === 1 ? t.step : t.steps}${found.length > displayed.length ? ` · ${displayed.length} ${t.shown}` : ''}`;
+  const openSources = new Set([...grid.querySelectorAll('article.action-card details[open]')].map((details) => details.closest('article')?.id));
+  const cards = displayed.map((action, index) => {
+    const card = makeCard(action, index);
+    if (openSources.has(action.id)) card.querySelector('details').open = true;
+    return card;
+  });
+  grid.replaceChildren(...cards);
+  const path = pathways.find((item) => item.id === selectedPath);
+  resultsCount.textContent = `${found.length} ${found.length === 1 ? t.step : t.steps}${path ? ` · ${path[locale].title}` : ''}${found.length > displayed.length ? ` · ${displayed.length} ${t.shown}` : ''}`;
   emptyState.hidden = found.length !== 0;
   loadMore.hidden = found.length <= displayed.length;
-  clearFilters.hidden = selectedCategory === 'all' && selectedEffort === 'all' && !savedOnly && !query;
+  clearFilters.hidden = !selectedPath && selectedCategory === 'all' && selectedEffort === 'all' && !savedOnly && !query;
   savedCount.textContent = saved.size;
   savedFilter.setAttribute('aria-pressed', String(savedOnly));
 }
 
+pathwayList.addEventListener('click', (event) => {
+  const button = event.target.closest('button[data-path]');
+  if (!button) return;
+  setPath(selectedPath === button.dataset.path ? null : button.dataset.path);
+  selectedCategory = 'all'; selectedEffort = 'all'; savedOnly = false; query = ''; visibleCount = 12;
+  search.value = ''; effortFilter.value = 'all';
+  render();
+  resultsCount.focus({ preventScroll: true });
+  resultsCount.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+});
 categoryFilters.addEventListener('click', (event) => {
   const button = event.target.closest('button[data-category]');
   if (!button) return;
+  setPath(null);
   selectedCategory = button.dataset.category;
   visibleCount = 12;
   render();
 });
-search.addEventListener('input', () => { query = search.value; visibleCount = 12; render(); });
-effortFilter.addEventListener('change', () => { selectedEffort = effortFilter.value; visibleCount = 12; render(); });
-savedFilter.addEventListener('click', () => { savedOnly = !savedOnly; visibleCount = 12; render(); });
+search.addEventListener('input', () => { setPath(null); query = search.value; visibleCount = 12; render(); });
+effortFilter.addEventListener('change', () => { setPath(null); selectedEffort = effortFilter.value; visibleCount = 12; render(); });
+savedFilter.addEventListener('click', () => { setPath(null); savedOnly = !savedOnly; visibleCount = 12; render(); });
 clearFilters.addEventListener('click', () => {
+  setPath(null);
   selectedCategory = 'all'; selectedEffort = 'all'; savedOnly = false; query = ''; visibleCount = 12;
   search.value = ''; effortFilter.value = 'all'; render(); search.focus();
 });
-loadMore.addEventListener('click', () => { visibleCount += 12; render(); });
+loadMore.addEventListener('click', () => {
+  const firstNewIndex = visibleCount;
+  visibleCount += 12;
+  render();
+  const firstNewHeading = grid.children[firstNewIndex]?.querySelector('h3');
+  if (firstNewHeading) {
+    firstNewHeading.tabIndex = -1;
+    firstNewHeading.focus({ preventScroll: true });
+    firstNewHeading.scrollIntoView({ block: 'start' });
+  }
+});
 document.addEventListener('keydown', (event) => {
   if (event.key !== '/' || event.metaKey || event.ctrlKey || event.altKey) return;
   if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName) || document.activeElement?.isContentEditable) return;
@@ -260,13 +348,13 @@ document.querySelectorAll('.theme-toggle').forEach((button) => button.addEventLi
 }));
 
 render();
-document.querySelectorAll('a[hreflang]').forEach((link) => {
-  if (location.hash) link.href += location.hash;
-});
+syncLanguageLinks();
+window.addEventListener('hashchange', syncLanguageLinks);
 if (location.hash) {
   let id = '';
   try { id = decodeURIComponent(location.hash.slice(1)); } catch { /* Ignore malformed fragments. */ }
   if (actions.some((action) => action.id === id)) {
+    if (selectedPath && !pathways.find((path) => path.id === selectedPath)?.actions.includes(id)) setPath(null);
     visibleCount = actions.length;
     render();
     requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView());

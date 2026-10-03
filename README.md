@@ -5,9 +5,10 @@ public site is at [livewell.sig.ai](https://livewell.sig.ai/) in English and
 [livewell.sig.ai/es/](https://livewell.sig.ai/es/) in Spanish.
 
 This is a curated starting point, not a checklist that everyone should finish.
-It covers safety, health, money, support, home, work, and connection. Each of the
-52 action cards pairs a brief reason with a doable first step and at least one
-public source. Cards avoid promising eligibility or giving personal medical,
+It covers safety, health, money, support, home, work, connection, family care,
+digital safety, and everyday rights. Each of the 121 action cards pairs a brief
+reason with a doable first step and at least one public source. Six short
+starting paths connect related steps across topics. Cards avoid promising eligibility or giving personal medical,
 legal, or financial advice. Rules and services can vary by state and change over
 time.
 
@@ -17,7 +18,7 @@ The [How to Live Better](https://cdyforever.github.io/how-to-live-better/) reade
 inspired the idea of making a large amount of practical guidance easy to browse.
 Its Chinese services, laws, and health claims do not translate directly to U.S.
 life. This project uses original English and Spanish writing and U.S.-relevant
-sources, with a smaller launch collection for readability. No text was copied
+sources, with a curated collection and situation-based starting paths. No text was copied
 from the reference. The reference's upstream source is licensed
 [CC BY 4.0](https://github.com/eternity4719/HowToLiveBetter/blob/main/LICENSE).
 
@@ -39,15 +40,23 @@ LIVEWELL_BIND_IP=127.0.0.1 docker compose up --build
 The default Compose port binding is the SIG.AI `sigdev2` LAN address. The
 `LIVEWELL_BIND_IP` variable changes the bind address for local use or standby.
 
+Check content structure, translation fields, source references, and path IDs:
+
+```sh
+node scripts/check-content.mjs
+```
+
 ## How the guide works
 
 - `index.html` and `es/index.html` contain the two independently written page
   shells, language metadata, and resource links.
-- `content.js` contains matched English and Spanish action cards, categories,
-  and source URLs. Each action has a stable `id` used in both languages and
-  shareable `#` links.
+- `content.js` contains the original launch cards and all ten categories.
+  `expansion-family.js`, `expansion-rights.js`, and `expansion-lifecourse.js`
+  add bilingual cards and source URLs. Each action has a stable `id` used in
+  both languages and shareable `#` links. `pathways.js` connects selected
+  actions into six short starting paths.
 - `app.js` provides search, topic/time filters, saved steps, theme switching,
-  and source disclosures. Saved IDs and the theme live in the browser's local
+  situation paths, and source disclosures. Saved IDs and the theme live in the browser's local
   storage. There is no account, database, or site-owned analytics code.
   Cloudflare delivers the public site and may add its own traffic measurement
   script; the design also loads fonts from Google Fonts. Saved step IDs are not
@@ -62,8 +71,9 @@ eligibility as a lookup rather than a universal promise. Check both languages
 and the linked pages before publishing. Source links were checked in October
 2026; they need periodic review because services and guidance can change.
 When changing CSS, JavaScript, or content, update the shared `?v=` asset token
-in both HTML files and the `content.js` import in `app.js` so Cloudflare fetches
-the new static files immediately.
+in both HTML files and every module import in `app.js` so Cloudflare fetches
+the new static files immediately. Add new public files to `.dockerignore`'s
+allowlist before building the Docker image.
 
 For deployment and failover notes, see [DEPLOYMENT.md](DEPLOYMENT.md).
 

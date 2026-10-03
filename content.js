@@ -9,6 +9,9 @@ export const categories = [
   { id: 'home', en: { name: 'Prepare your home', description: 'Make the place you live safer and ready for disruption.' }, es: { name: 'Prepara tu hogar', description: 'Haz más seguro tu hogar y prepárate para imprevistos.' } },
   { id: 'work', en: { name: 'Protect your work life', description: 'Practical steps for pay, safety, leave, and a job search.' }, es: { name: 'Protege tu vida laboral', description: 'Pasos prácticos sobre salario, seguridad, licencias y empleo.' } },
   { id: 'connection', en: { name: 'Stay connected', description: 'Build the people and community you can count on.' }, es: { name: 'Mantén tus vínculos', description: 'Fortalece las personas y comunidades con quienes puedes contar.' } },
+  { id: 'family', en: { name: 'Care for family', description: 'Support children, older adults, and the people who care for them.' }, es: { name: 'Cuida a tu familia', description: 'Apoya a niños, adultos mayores y a quienes los cuidan.' } },
+  { id: 'digital', en: { name: 'Stay safer online', description: 'Protect accounts and personal information in everyday digital life.' }, es: { name: 'Protégete en línea', description: 'Cuida tus cuentas y datos personales en la vida digital.' } },
+  { id: 'rights', en: { name: 'Know your options', description: 'Find a next step when a service, purchase, or legal issue goes wrong.' }, es: { name: 'Conoce tus opciones', description: 'Busca un siguiente paso si hay problemas con servicios, compras o asuntos legales.' } },
 ];
 
 export const sources = [
@@ -228,7 +231,7 @@ export const actions = [
   {
     id: 'treatment-search', category: 'support', effort: 'today',
     en: { title: 'Find mental health or substance use care', why: 'You do not have to find a provider by word of mouth alone.', step: 'Search SAMHSA’s FindTreatment.gov by location; for an immediate emotional crisis, call or text 988.' },
-    es: { title: 'Busca atención de salud mental o por consumo de sustancias', why: 'No tienes que encontrar ayuda solo por recomendaciones personales.', step: 'Busca por zona en FindTreatment.gov de SAMHSA; si hay una crisis emocional inmediata, llama o envía un texto al 988.' },
+    es: { title: 'Busca atención de salud mental o por consumo de sustancias', why: 'No tienes que encontrar ayuda solo por recomendaciones personales.', step: 'Busca por zona en FindTreatment.gov de SAMHSA; si hay una crisis emocional inmediata, llama al 988 y oprime 2, o envía AYUDA al 988.' },
     sources: ['treatment', '988'],
   },
   {
