@@ -111,7 +111,8 @@ function renderFilters() {
 }
 
 function filteredActions() {
-  const needle = query.trim().toLocaleLowerCase(locale === 'es' ? 'es-US' : 'en-US');
+  const fold = (value) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase(locale === 'es' ? 'es-US' : 'en-US');
+  const needle = fold(query.trim());
   return actions.filter((action) => {
     if (selectedCategory !== 'all' && action.category !== selectedCategory) return false;
     if (selectedEffort !== 'all' && action.effort !== selectedEffort) return false;
@@ -119,7 +120,7 @@ function filteredActions() {
     if (!needle) return true;
     const category = byCategory.get(action.category);
     const linkedSources = action.sources.map((id) => bySource.get(id)).filter(Boolean);
-    const haystack = [action.en.title, action.en.why, action.en.step, action.es.title, action.es.why, action.es.step, category?.en.name, category?.es.name, ...linkedSources.flatMap((source) => [source.name, source.esName || ''])].join(' ').toLocaleLowerCase(locale === 'es' ? 'es-US' : 'en-US');
+    const haystack = fold([action.en.title, action.en.why, action.en.step, action.es.title, action.es.why, action.es.step, category?.en.name, category?.es.name, ...linkedSources.flatMap((source) => [source.name, source.esName || ''])].join(' '));
     return haystack.includes(needle);
   });
 }
@@ -215,7 +216,7 @@ function render() {
   renderFilters();
   const found = filteredActions();
   const displayed = found.slice(0, visibleCount);
-  grid.replaceChildren(...displayed.map((action) => makeCard(action, actions.indexOf(action))));
+  grid.replaceChildren(...displayed.map((action, index) => makeCard(action, index)));
   resultsCount.textContent = `${found.length} ${found.length === 1 ? t.step : t.steps}${found.length > displayed.length ? ` · ${displayed.length} ${t.shown}` : ''}`;
   emptyState.hidden = found.length !== 0;
   loadMore.hidden = found.length <= displayed.length;
@@ -259,8 +260,12 @@ document.querySelectorAll('.theme-toggle').forEach((button) => button.addEventLi
 }));
 
 render();
+document.querySelectorAll('a[hreflang]').forEach((link) => {
+  if (location.hash) link.href += location.hash;
+});
 if (location.hash) {
-  const id = decodeURIComponent(location.hash.slice(1));
+  let id = '';
+  try { id = decodeURIComponent(location.hash.slice(1)); } catch { /* Ignore malformed fragments. */ }
   if (actions.some((action) => action.id === id)) {
     visibleCount = actions.length;
     render();

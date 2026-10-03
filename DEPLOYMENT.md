@@ -10,8 +10,8 @@ no account, database, server-side code, or runtime secrets are needed.
    repository. Clone or fast-forward it to `/home/yonghuang/howtolivewell` on
    `sigdev2`. Do not overwrite local changes on the server.
 2. On `sigdev2`, run `docker compose up -d --build` in that directory. The Compose
-   service publishes container port 8080 to `192.168.68.85:3640`; check that
-   this port is free immediately before deployment.
+   service publishes container port 8080 to `192.168.68.85:3640` by default;
+   check that this port is free immediately before deployment.
 3. Check `docker compose ps` and fetch both
    `http://192.168.68.85:3640/` and `http://192.168.68.85:3640/es/`.
    Fetch `/style.css`, `/app.js`, and `/favicon.svg` as well.
@@ -39,8 +39,9 @@ The static image has no mutable application data. Add `howtolivewell` to the
 static-site Compose directory list in the fleet-ops `stage-refresh.sh`, stage
 its image and Compose file on `t20`, and verify the new edge vhost reaches t20
 through its enabled `proxy-standby-sync.timer`. The Compose port binds the
-sigdev2 LAN address; a t20 promotion must use its own LAN address in a Compose
-override before starting the service. Check the actual failover runbook before
+sigdev2 LAN address by default. On t20, keep a local untracked `.env` with
+`LIVEWELL_BIND_IP=192.168.68.81` so the same Compose service starts on the
+standby address during promotion. Check the actual failover runbook before
 relying on standby coverage.
 
 For an update, fast-forward the server checkout to the reviewed Git commit,

@@ -33,11 +33,11 @@ Open `http://localhost:8000/` or `http://localhost:8000/es/`. The files also
 serve directly through the included Nginx container:
 
 ```sh
-docker compose up --build
+LIVEWELL_BIND_IP=127.0.0.1 docker compose up --build
 ```
 
-The Compose port binding is configured for the SIG.AI `sigdev2` LAN address.
-Change it for local Docker use if that address is not present on your machine.
+The default Compose port binding is the SIG.AI `sigdev2` LAN address. The
+`LIVEWELL_BIND_IP` variable changes the bind address for local use or standby.
 
 ## How the guide works
 
