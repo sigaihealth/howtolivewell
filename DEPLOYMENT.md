@@ -11,7 +11,9 @@ no account, database, server-side code, or runtime secrets are needed.
    `sigdev2`. Do not overwrite local changes on the server.
 2. On `sigdev2`, run `docker compose up -d --build` in that directory. The Compose
    service publishes container port 8080 to `192.168.68.85:3640` by default;
-   check that this port is free immediately before deployment.
+   check that this port is free immediately before deployment. It uses Docker's
+   existing bridge network because sigdev2's user-defined address pools are
+   exhausted.
 3. Check `docker compose ps` and fetch both
    `http://192.168.68.85:3640/` and `http://192.168.68.85:3640/es/`.
    Fetch `/style.css`, `/app.js`, and `/favicon.svg` as well.

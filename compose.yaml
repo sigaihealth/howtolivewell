@@ -7,6 +7,8 @@ services:
     image: sigai/howtolivewell:local
     container_name: howtolivewell
     restart: unless-stopped
+    # sigdev2's user-defined Docker bridge address pools are exhausted.
+    network_mode: bridge
     ports:
       - "${LIVEWELL_BIND_IP:-192.168.68.85}:3640:8080"
     read_only: true
