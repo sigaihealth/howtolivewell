@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://livewell.sig.ai/sitemap.xml

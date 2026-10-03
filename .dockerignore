@@ -1,0 +1,11 @@
+*
+!nginx.conf
+!index.html
+!style.css
+!app.js
+!content.js
+!favicon.svg
+!robots.txt
+!sitemap.xml
+!es/
+!es/index.html

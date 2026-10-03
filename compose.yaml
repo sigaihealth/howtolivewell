@@ -1,0 +1,30 @@
+name: howtolivewell
+
+services:
+  web:
+    build:
+      context: .
+    image: sigai/howtolivewell:local
+    container_name: howtolivewell
+    restart: unless-stopped
+    ports:
+      - "192.168.68.85:3640:8080"
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=16m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 64
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1:8080/ && wget -q -O /dev/null http://127.0.0.1:8080/es/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
