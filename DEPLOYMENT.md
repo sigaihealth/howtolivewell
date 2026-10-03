@@ -9,7 +9,10 @@ no account, database, server-side code, or runtime secrets are needed.
 1. Check that the reviewed source is committed and pushed to the public GitHub
    repository. Clone or fast-forward it to `/home/yonghuang/howtolivewell` on
    `sigdev2`. Do not overwrite local changes on the server.
-   Run `node scripts/check-content.mjs` before the push.
+   Before the push, run `node scripts/check-content.mjs`,
+   `node scripts/build-guides.mjs`, `node scripts/build-sitemap.mjs`, and
+   `node scripts/check-seo.mjs` locally. Commit the generated topic pages and
+   sitemap with the source changes. The server does not need Node.js.
 2. On `sigdev2`, run `docker compose up -d --build` in that directory. The Compose
    service publishes container port 8080 to `192.168.68.85:3640` by default;
    check that this port is free immediately before deployment. It uses Docker's
@@ -18,7 +21,10 @@ no account, database, server-side code, or runtime secrets are needed.
 3. Check `docker compose ps` and fetch both
    `http://192.168.68.85:3640/` and `http://192.168.68.85:3640/es/`.
    Fetch `/style.css`, `/app.js`, `/content.js`, `/pathways.js`, all three
-   `expansion-*.js` modules, and `/favicon.svg` as well.
+   `expansion-*.js` modules, `/guide.css`, `/favicon.svg`, and `/sitemap.xml`
+   as well. Check a topic and editorial page in each language. For an SEO
+   release, fetch every URL listed in the sitemap and confirm HTML 200 plus
+   its canonical and language alternatives.
 4. On `sigdev1`, install `deploy/livewell.sig.ai.nginx` as the real file
    `/etc/nginx/sites-enabled/livewell.sig.ai`. Run `sudo nginx -t` before
    `sudo systemctl reload nginx`. The vhost reuses the existing `*.sig.ai`
@@ -49,6 +55,8 @@ standby address during promotion. Check the actual failover runbook before
 relying on standby coverage.
 
 For an update, fast-forward the server checkout to the reviewed Git commit,
-run `docker compose up -d --build`, verify both languages, and stage the new
-image on t20. The `.dockerignore` is a public-file allowlist; add any new public
-assets there before deploying them.
+run `docker compose up -d --build`, verify both languages and the complete
+sitemap, and stage the new image on t20. The `.dockerignore` is a public-file
+allowlist; add any new public assets there before deploying them. Stage only
+the `howtolivewell` image and Compose file on t20 for a routine site update;
+the fleet-wide `stage-refresh.sh` also changes unrelated stacks.

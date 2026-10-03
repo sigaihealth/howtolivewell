@@ -5,11 +5,167 @@
     <lastmod>2026-10-02</lastmod>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://livewell.sig.ai/" />
     <xhtml:link rel="alternate" hreflang="es-US" href="https://livewell.sig.ai/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livewell.sig.ai/" />
   </url>
   <url>
     <loc>https://livewell.sig.ai/es/</loc>
     <lastmod>2026-10-02</lastmod>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://livewell.sig.ai/" />
     <xhtml:link rel="alternate" hreflang="es-US" href="https://livewell.sig.ai/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livewell.sig.ai/" />
+  </url>
+  <url>
+    <loc>https://livewell.sig.ai/topics/safety/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://livewell.sig.ai/topics/safety/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://livewell.sig.ai/es/temas/seguridad/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livewell.sig.ai/topics/safety/" />
+  </url>
+  <url>
+    <loc>https://livewell.sig.ai/es/temas/seguridad/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://livewell.sig.ai/topics/safety/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://livewell.sig.ai/es/temas/seguridad/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livewell.sig.ai/topics/safety/" />
+  </url>
+  <url>
+    <loc>https://livewell.sig.ai/topics/health/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://livewell.sig.ai/topics/health/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://livewell.sig.ai/es/temas/salud/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livewell.sig.ai/topics/health/" />
+  </url>
+  <url>
+    <loc>https://livewell.sig.ai/es/temas/salud/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://livewell.sig.ai/topics/health/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://livewell.sig.ai/es/temas/salud/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livewell.sig.ai/topics/health/" />
+  </url>
+  <url>
+    <loc>https://livewell.sig.ai/topics/money/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://livewell.sig.ai/topics/money/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://livewell.sig.ai/es/temas/dinero/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livewell.sig.ai/topics/money/" />
+  </url>
+  <url>
+    <loc>https://livewell.sig.ai/es/temas/dinero/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://livewell.sig.ai/topics/money/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://livewell.sig.ai/es/temas/dinero/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livewell.sig.ai/topics/money/" />
+  </url>
+  <url>
+    <loc>https://livewell.sig.ai/topics/support/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://livewell.sig.ai/topics/support/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://livewell.sig.ai/es/temas/apoyo/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livewell.sig.ai/topics/support/" />
+  </url>
+  <url>
+    <loc>https://livewell.sig.ai/es/temas/apoyo/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://livewell.sig.ai/topics/support/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://livewell.sig.ai/es/temas/apoyo/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livewell.sig.ai/topics/support/" />
+  </url>
+  <url>
+    <loc>https://livewell.sig.ai/topics/home/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://livewell.sig.ai/topics/home/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://livewell.sig.ai/es/temas/hogar/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livewell.sig.ai/topics/home/" />
+  </url>
+  <url>
+    <loc>https://livewell.sig.ai/es/temas/hogar/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://livewell.sig.ai/topics/home/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://livewell.sig.ai/es/temas/hogar/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livewell.sig.ai/topics/home/" />
+  </url>
+  <url>
+    <loc>https://livewell.sig.ai/topics/work/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://livewell.sig.ai/topics/work/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://livewell.sig.ai/es/temas/trabajo/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livewell.sig.ai/topics/work/" />
+  </url>
+  <url>
+    <loc>https://livewell.sig.ai/es/temas/trabajo/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://livewell.sig.ai/topics/work/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://livewell.sig.ai/es/temas/trabajo/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livewell.sig.ai/topics/work/" />
+  </url>
+  <url>
+    <loc>https://livewell.sig.ai/topics/connection/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://livewell.sig.ai/topics/connection/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://livewell.sig.ai/es/temas/vinculos/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livewell.sig.ai/topics/connection/" />
+  </url>
+  <url>
+    <loc>https://livewell.sig.ai/es/temas/vinculos/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://livewell.sig.ai/topics/connection/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://livewell.sig.ai/es/temas/vinculos/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livewell.sig.ai/topics/connection/" />
+  </url>
+  <url>
+    <loc>https://livewell.sig.ai/topics/family/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://livewell.sig.ai/topics/family/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://livewell.sig.ai/es/temas/familia/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livewell.sig.ai/topics/family/" />
+  </url>
+  <url>
+    <loc>https://livewell.sig.ai/es/temas/familia/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://livewell.sig.ai/topics/family/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://livewell.sig.ai/es/temas/familia/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livewell.sig.ai/topics/family/" />
+  </url>
+  <url>
+    <loc>https://livewell.sig.ai/topics/digital/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://livewell.sig.ai/topics/digital/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://livewell.sig.ai/es/temas/seguridad-digital/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livewell.sig.ai/topics/digital/" />
+  </url>
+  <url>
+    <loc>https://livewell.sig.ai/es/temas/seguridad-digital/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://livewell.sig.ai/topics/digital/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://livewell.sig.ai/es/temas/seguridad-digital/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livewell.sig.ai/topics/digital/" />
+  </url>
+  <url>
+    <loc>https://livewell.sig.ai/topics/rights/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://livewell.sig.ai/topics/rights/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://livewell.sig.ai/es/temas/derechos/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livewell.sig.ai/topics/rights/" />
+  </url>
+  <url>
+    <loc>https://livewell.sig.ai/es/temas/derechos/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://livewell.sig.ai/topics/rights/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://livewell.sig.ai/es/temas/derechos/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livewell.sig.ai/topics/rights/" />
+  </url>
+  <url>
+    <loc>https://livewell.sig.ai/editorial/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://livewell.sig.ai/editorial/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://livewell.sig.ai/es/metodologia/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livewell.sig.ai/editorial/" />
+  </url>
+  <url>
+    <loc>https://livewell.sig.ai/es/metodologia/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://livewell.sig.ai/editorial/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://livewell.sig.ai/es/metodologia/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livewell.sig.ai/editorial/" />
   </url>
 </urlset>

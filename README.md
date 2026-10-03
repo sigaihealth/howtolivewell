@@ -12,6 +12,12 @@ starting paths connect related steps across topics. Cards avoid promising eligib
 legal, or financial advice. Rules and services can vary by state and change over
 time.
 
+The interactive home pages are paired with ten complete, crawlable topic guides
+in each language. Every topic guide contains its actions and source links in
+the HTML, so readers and crawlers can use it without JavaScript. The
+[editorial-method page](https://livewell.sig.ai/editorial/) explains who
+publishes the guide, how sources are chosen, and how to request a correction.
+
 ## Why this version exists
 
 The [How to Live Better](https://cdyforever.github.io/how-to-live-better/) reader
@@ -46,10 +52,23 @@ Check content structure, translation fields, source references, and path IDs:
 node scripts/check-content.mjs
 ```
 
+After changing actions, sources, or topic introductions, rebuild the static
+topic pages and sitemap, then check crawlable HTML and language links:
+
+```sh
+node scripts/build-guides.mjs
+node scripts/build-sitemap.mjs
+node scripts/check-seo.mjs
+```
+
+The sitemap builder's `lastModified` date is changed only for substantive page
+updates. Commit generated pages with their source changes.
+
 ## How the guide works
 
 - `index.html` and `es/index.html` contain the two independently written page
-  shells, language metadata, and resource links.
+  shells, language metadata, resource links, and ordinary links to all topic
+  guides.
 - `content.js` contains the original launch cards and all ten categories.
   `expansion-family.js`, `expansion-rights.js`, and `expansion-lifecourse.js`
   add bilingual cards and source URLs. Each action has a stable `id` used in
@@ -63,6 +82,12 @@ node scripts/check-content.mjs
   sent to either service.
 - `style.css` provides responsive layout, keyboard focus styles, contrast-aware
   light/dark themes, reduced-motion support, and print rules.
+- `scripts/guide-metadata.mjs` holds the topic introductions and EN/ES URL map.
+  `scripts/build-guides.mjs` renders the HTML under `topics/` and `es/temas/`.
+  `guide.css` styles those pages and the editorial-method pages.
+- `scripts/build-sitemap.mjs` produces `sitemap.xml` with reciprocal language
+  alternatives. `scripts/check-seo.mjs` verifies the generated cards, language
+  links, canonical URLs, sitemap entries, and homepage links.
 
 To add an action, use a stable unique ID and fill in the `en` and `es` fields
 with natural writing. Link the specific public page that supports the step, not
@@ -70,10 +95,15 @@ just an agency homepage. Prefer primary U.S. sources; describe state-specific
 eligibility as a lookup rather than a universal promise. Check both languages
 and the linked pages before publishing. Source links were checked in October
 2026; they need periodic review because services and guidance can change.
-When changing CSS, JavaScript, or content, update the shared `?v=` asset token
-in both HTML files and every module import in `app.js` so Cloudflare fetches
-the new static files immediately. Add new public files to `.dockerignore`'s
-allowlist before building the Docker image.
+When changing CSS or JavaScript, update its `?v=` token where it is referenced
+so Cloudflare fetches the new static file immediately. Add new public files to
+`.dockerignore`'s allowlist before building the Docker image.
+
+This work makes content easier to discover and cite. It does not guarantee
+search rankings, indexing, or citations in AI-generated answers. [Google's
+current guidance](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)
+says its AI search features use the ordinary Search foundation; no special GEO
+schema or `llms.txt` is required for Google Search.
 
 For deployment and failover notes, see [DEPLOYMENT.md](DEPLOYMENT.md).
 

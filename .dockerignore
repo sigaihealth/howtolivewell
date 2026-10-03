@@ -2,6 +2,7 @@
 !nginx.conf
 !index.html
 !style.css
+!guide.css
 !app.js
 !content.js
 !expansion-family.js
@@ -13,3 +14,11 @@
 !sitemap.xml
 !es/
 !es/index.html
+!topics/
+!topics/**
+!es/temas/
+!es/temas/**
+!editorial/
+!editorial/index.html
+!es/metodologia/
+!es/metodologia/index.html
