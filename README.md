@@ -48,8 +48,10 @@ The default Compose port binding is the SIG.AI `sigdev2` LAN address. The
   shareable `#` links.
 - `app.js` provides search, topic/time filters, saved steps, theme switching,
   and source disclosures. Saved IDs and the theme live in the browser's local
-  storage. There is no account, database, analytics script, or user data sent
-  to this site. The design currently loads fonts from Google Fonts.
+  storage. There is no account, database, or site-owned analytics code.
+  Cloudflare delivers the public site and may add its own traffic measurement
+  script; the design also loads fonts from Google Fonts. Saved step IDs are not
+  sent to either service.
 - `style.css` provides responsive layout, keyboard focus styles, contrast-aware
   light/dark themes, reduced-motion support, and print rules.
 
